@@ -1,0 +1,16 @@
+
+
+.error {
+    height: 100vh;
+    @include df();
+    flex-direction: column;
+    a {
+        margin-bottom: 1rem;
+    }
+    img {
+        width: 30%;
+    }
+    p {
+        font-size: 5vw;
+    }
+}

@@ -1,0 +1,152 @@
+.home {
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 90vw;
+        margin: 0 3rem ;
+        height: 50vh;
+        opacity: 0.1;
+        pointer-events: none;
+        background-image: url('../../assets/images/spacex.png');
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .container-fluid {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    &-title {
+        text-align: center;
+        display:flex;
+        align-items: center;
+        margin:2rem auto 0 ;
+        img {
+            height: 4rem;
+        }
+    }
+    &-center {
+        display: grid;
+        grid-gap:2rem 5%;
+
+        flex: 1;
+        overflow: hidden;
+        padding: 2rem 6% 5rem;
+    }
+}
+.board {
+    box-shadow: -2px -2px 4px 0px #ffffff, 50px 50px 50px 0px rgba(0, 0, 0, .25);
+    padding: 2rem 1rem;
+    border-radius: 2rem;
+    transition: background-color .3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    // &.drag-enter {
+    //     background-color: rgba(0, 0, 0, 0.1);
+    // }
+
+    &-title {
+        user-select: none;
+        pointer-events: none;
+    }
+    &:nth-child(1){
+        z-index: 1;
+    }
+    &:nth-child(2){
+        z-index: 2;
+    }
+    &:nth-child(3){
+        z-index: 3;
+    }
+
+    .wrapper {
+        height: 100%;
+        display: flex;
+        gap: 2rem;
+        overflow-y: hidden;
+        overflow-x: auto;
+        padding: 1rem;
+    }
+    &:hover {
+        // transform: translateY(-10px);
+    }
+}
+
+.past-launches {
+    background-color: color(dark);
+    color: color(light);
+    &:hover {
+        transform: none;
+    }
+    .wrapper {
+        &::-webkit-scrollbar {
+            background-color: color(dark-v2);
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+    .card {
+        // pointer-events: none;
+        color: color(light);
+        background-color: color(dark-v2);
+        box-shadow:-2px -2px 4px rgba(255, 255, 255, 0.05),
+        0 0 10px 10px rgba(255, 255, 255, 0.005),
+        2px 2px 8px rgba(60, 60, 60, 0.1);
+        &-title {
+            color: color(light,0.5);
+        }
+        &-text {
+            color: color(danger,0.8);
+        }
+        &:hover,
+        &:active {
+            box-shadow:-2px -2px 4px rgba(255, 255, 255, 0.05),
+            0 0 10px 10px rgba(255, 255, 255, 0.005),
+            2px 2px 8px rgba(60, 60, 60, 0.1);
+            transform: scale(1);
+        }
+    }
+}
+
+
+@include mq(1080px) {
+    .home {
+        height: 100vh;
+        &-title {
+            margin-top: 5rem;
+        }
+        &-center {
+            padding: 3rem 8% 6rem;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .board {
+            &-title {
+                margin-bottom: .5rem;
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    .board {
+        .wrapper {
+            flex-direction: column;
+            overflow-y: auto;
+            overflow-x: visible;
+        }
+    }
+}
