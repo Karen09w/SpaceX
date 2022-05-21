@@ -102,7 +102,9 @@ export default function Home() {
             setIsModalShown(true);
         } else {
             setItems();
-            notify()
+            if(currentBoardIndex === 2){
+                notify()
+            }
         }
         setDragging(false);
     };
