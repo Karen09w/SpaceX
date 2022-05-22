@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "../../components";
 import { useFetch } from "../../hooks/useFetch";
 import localData from "../../localData";
+import { useGlobalContext } from "../../context";
 
 export default function Launch() {
     const params = useParams();
@@ -11,11 +12,16 @@ export default function Launch() {
 
     const [singleLaunch, setSingleLaunch] = useState({});
 
+    const { handleNavigateStart, handleNavigateEnd } = useGlobalContext();
+
+    useEffect(() => {
+        if (Object.entries(singleLaunch).length) handleNavigateEnd();
+    }, [singleLaunch]);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const tempSingleLaunch = await getSingleLaunch(null, params.launchId);
-                console.log(tempSingleLaunch);
                 setSingleLaunch(tempSingleLaunch);
             } catch (err) {
                 console.log(err, "here");
@@ -39,9 +45,9 @@ export default function Launch() {
                                 <li>id: {singleLaunch.id}</li>
                                 <li>rocket: {singleLaunch.rocket}</li>
                                 <li>date: {new Date(singleLaunch.date_utc).toString()}</li>
-                                <Link to="/">
+                                <a onClick={() => handleNavigateStart()}>
                                     <Button className="btn btn-primary btn-lg d-block">return</Button>
-                                </Link>
+                                </a>
                             </ul>
                             <div className="img-wrapper">
                                 <img src={spacexBadge} alt="" />

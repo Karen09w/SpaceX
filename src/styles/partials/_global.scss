@@ -42,7 +42,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 
     background-color: #e8eff5;
+    transition: opacity .5s ease;
+    &.hidden {
+        opacity: 0;
+    }
 }
+
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;

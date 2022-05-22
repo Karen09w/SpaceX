@@ -6,7 +6,7 @@ import { ProtectedRoutes } from "../components";
 
 export default function routes(isAuthenticated) {
     return (
-      <Router>
+    //   <Router>
             <Routes>
                 <Route path="/login" element={<Error />} />
           
@@ -17,7 +17,7 @@ export default function routes(isAuthenticated) {
           
                 <Route path="*" element={<Error />} />
             </Routes>
-      </Router>
+    //   </Router>
     );
     // if (isAuthenticated) {
     //     return (

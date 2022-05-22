@@ -89,9 +89,7 @@
 .past-launches {
     background-color: color(dark);
     color: color(light);
-    &:hover {
-        transform: none;
-    }
+
     .wrapper {
         &::-webkit-scrollbar {
             background-color: color(dark-v2);
@@ -104,25 +102,34 @@
         // pointer-events: none;
         color: color(light);
         background-color: color(dark-v2);
-        box-shadow:-2px -2px 4px rgba(255, 255, 255, 0.05),
-        0 0 10px 10px rgba(255, 255, 255, 0.005),
-        2px 2px 8px rgba(60, 60, 60, 0.1);
+        // box-shadow:-2px -2px 4px rgba(255, 255, 255, 0.05),
+        // 0 0 10px 10px rgba(255, 255, 255, 0.005),
+        // 2px 2px 8px rgba(60, 60, 60, 0.1);
+        // &:hover {
+        //     box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+        //     0 0 10px 10px rgba(255, 255, 255, 0.005),
+        //     2px 2px 8px rgba(60, 60, 60, 0.1);
+        // }
+        box-shadow:  inset 3px  3px 5px rgba(0,0,0,.7)
+        , inset -3px -3px 5px rgba(255,255,255,.1);
+        &:hover {
+            box-shadow:   -4px  -4px 5px rgba(255,255,255,.03)
+            ,  3px 3px 5px rgba(0,0,0,.7);
+        }
+        &:active {
+            transform: none;
+        }
         &-title {
             color: color(light,0.5);
         }
         &-text {
             color: color(danger,0.8);
         }
-        &:hover,
-        &:active {
-            box-shadow:-2px -2px 4px rgba(255, 255, 255, 0.05),
-            0 0 10px 10px rgba(255, 255, 255, 0.005),
-            2px 2px 8px rgba(60, 60, 60, 0.1);
-            transform: scale(1);
-        }
+
     }
 }
-.book-launches {
+.book-launches,
+.present-launches {
     position: relative;
     &:before {
         content: 'drag here';

@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { Modal, LaunchCard } from "../../components";
 import localData from "../../localData";
 import { useFetch } from "../../hooks/useFetch";
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
     const { globus } = localData.images;
@@ -91,10 +91,9 @@ export default function Home() {
             tempBoards[dragItem.current.boardIndex].launches.splice(dragItem.current.launchIndex, 1)[0]
         );
         setBoards(tempBoards);
-        
+
         dragItem.current = null;
         dragNode.current = null;
-     
     };
 
     const dragEnd = () => {
@@ -102,15 +101,15 @@ export default function Home() {
             setIsModalShown(true);
         } else {
             setItems();
-            if(currentBoardIndex === 2){
-                notify()
+            if (currentBoardIndex === 2) {
+                notify();
             }
         }
         setDragging(false);
     };
 
     const dragEnter = (e, boardIndex) => {
-        e.stopPropagation()
+        e.stopPropagation();
 
         if (boardIndex == dragItem.current.boardIndex || boardIndex == 0) return;
         e.currentTarget.style.background = "rgba(0,0,0,0.1)";
@@ -128,12 +127,12 @@ export default function Home() {
         return "";
     };
 
-    const notify = () => toast("launch booked",{className:'custom-toast'});
+    const notify = () => toast("launch booked", { className: "custom-toast" });
 
     if (!boards) return "";
     return (
         <>
-            <main className="home" onDragEnter={()=>setCurrentBoardIndex(dragItem.current.boardIndex)}>
+            <main className="home" onDragEnter={() => setCurrentBoardIndex(dragItem.current.boardIndex)}>
                 <div className="container-fluid">
                     <h1 className="home-title">
                         explore the space <img src={globus} alt="globus image" />
@@ -177,7 +176,7 @@ export default function Home() {
                 // dialogClassName="modal-lg"
                 callback={callback}
             />
-             <ToastContainer />
+            <ToastContainer />
         </>
     );
 }
